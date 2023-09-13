@@ -3,7 +3,7 @@
 
 # Сервер 
 Игра: http://olololo.lol
-Graphana: http://olololo.lol:3000/goto/AEceCDmIk?orgId=1
+Graphana: http://olololo.lol:3000/goto/AEceCDmIk?orgId=1](http://olololo.lol:3000/d/c8a938e2-3632-4fca-bc2a-b3c3ff619f46/4-metrics?orgId=1&refresh=5s&from=1694605356574&to=1694605656574)http://olololo.lol:3000/d/c8a938e2-3632-4fca-bc2a-b3c3ff619f46/4-metrics?orgId=1&refresh=5s&from=1694605356574&to=1694605656574
 
 # Deploy
 Развернуть сервер с окружением( `Docker 24.0.5` )
