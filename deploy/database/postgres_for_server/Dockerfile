@@ -1,0 +1,5 @@
+FROM postgres:15.4
+ENV POSTGRES_USER server
+ENV POSTGRES_PASSWORD server
+ENV POSTGRES_DB server_db
+
