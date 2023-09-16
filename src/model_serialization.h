@@ -106,6 +106,16 @@ public:
         }
     }
 
+    [[nodiscard]] model::Dog Restore() const {
+        model::Dog dog{ name_ };
+        dog.SetId(id_);
+        dog.SetPos(pos_);
+        dog.SetSpeed(speed_);
+        dog.SetDirection(dir_);
+        dog.SetScore(score_);
+        return dog;
+    }
+
     [[nodiscard]] model::Dog Restore(std::vector< LootSharedPtr>& loots_restored) const {
         model::Dog dog{name_};
         dog.SetId(id_);

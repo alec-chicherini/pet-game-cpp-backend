@@ -19,10 +19,10 @@ conan_basic_setup(TARGETS)
 #LIB BEGIN
 add_library(game_server_lib STATIC
 	src/model.h
-        src/model.cpp
-        src/loot_generator.h
-        src/loot_generator.cpp
-        src/tagged.h
+    src/model.cpp
+    src/loot_generator.h
+    src/loot_generator.cpp
+    src/tagged.h
 	src/geom.h
 	src/collision_detector.h
 	src/collision_detector.cpp
@@ -31,6 +31,8 @@ add_library(game_server_lib STATIC
 	src/model_serialization.h
 	src/postgres.h
 	src/postgres.cpp
+	src/tagged_uuid.h
+	src/tagged_uuid.cpp
 )
 target_link_libraries(game_server_lib PUBLIC CONAN_PKG::boost Threads::Threads CONAN_PKG::libpq CONAN_PKG::libpqxx)
 #LIB END
@@ -51,8 +53,6 @@ add_executable(game_server
 	src/response_utils.cpp
 	src/request_file.h
 	src/request_file.cpp
-	src/tagged_uuid.h
-	src/tagged_uuid.cpp
 	src/request_api.h
 	src/extra_data.h
 	src/extra_data.cpp

@@ -75,11 +75,11 @@ SCENARIO("Test of ConcreteProvider and FindGatherEvents") {
         TestFixture::ConcreteProvider provider{
         collision_detector::Gatherer{ geom::Point2D(1.,1.),geom::Point2D(5.,1.), 0.5, 0},
         collision_detector::Item{ geom::Point2D(3.,1.), 0.5 ,0},  //+ have collision
-        collision_detector::Item{ geom::Point2D(6.,1.), 0.5, 0},  //- not
-        collision_detector::Item{ geom::Point2D(5.,1.), 0.5, 0}   //+
+        collision_detector::Item{ geom::Point2D(6.,1.), 0.5, 1},  //- not
+        collision_detector::Item{ geom::Point2D(5.,1.), 0.5, 2}   //+
         };
-        provider.AddItem({ geom::Point2D(5.,2.0000000001), 0.5 ,0 }); //-
-        provider.AddItem({ geom::Point2D(5.,1.9999999999), 0.5 ,0 }); //+
+        provider.AddItem({ geom::Point2D(5.,2.0000000001), 0.5 ,3 }); //-
+        provider.AddItem({ geom::Point2D(5.,1.9999999999), 0.5 ,4 }); //+
 
         THEN("Items and gatherers count") {
             REQUIRE(provider.ItemsCount() == size_t(5));
