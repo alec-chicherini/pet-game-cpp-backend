@@ -41,9 +41,9 @@ jobs:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: fa7d81fb0caaae8a2790c00d2a20c0d0
           filename: cmake_tests.json
-          label: Hello
-          message: World
-          color: orange
+          label: Weather is 
+          message: Ok
+          color: green
      #TODO: make badge creation for custom number of testest
      - name: Create Badge Test1
        uses: schneegans/dynamic-badges-action@v1.6.0
@@ -51,30 +51,30 @@ jobs:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: ed2a2e7c1b186ddb0a21808bb1ae10ff
           filename: test1.json
-          label: ${{ env.NAME_TEST_1 }}%
-          message: ${{ env.VALUE_TEST_1 }}%
+          label: ${{ env.NAME_TEST_1 }}
+          message: ${{ env.VALUE_TEST_1 }}
      - name: Create Badge Test2
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: d9de93dac332d25942b0f96035c984fa
           filename: test2.json
-          label: ${{ env.NAME_TEST_2 }}%
-          message: ${{ env.VALUE_TEST_2 }}%
+          label: ${{ env.NAME_TEST_2 }}
+          message: ${{ env.VALUE_TEST_2 }}
      - name: Create Badge Test3
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 28fd062fbed86ad9dcd6290b578976a3
           filename: test3.json
-          label: ${{ env.NAME_TEST_3 }}%
-          message: ${{ env.VALUE_TEST_3 }}%
+          label: ${{ env.NAME_TEST_3 }}
+          message: ${{ env.VALUE_TEST_3 }}
      - name: Create Badge Test4
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 78b5463ed3aae87047d4834b21eaaf86
           filename: test4.json
-          label: ${{ env.NAME_TEST_4 }}%
-          message: ${{ env.VALUE_TEST_4 }}%
+          label: ${{ env.NAME_TEST_4 }}
+          message: ${{ env.VALUE_TEST_4 }}
            
