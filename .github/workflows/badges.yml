@@ -27,12 +27,12 @@ jobs:
          I=1
          IFS=$'\n'
          for n in $NAMES_; do
-         echo "NAME_TEST_$I='$n'" >> $GITHUB_ENV
+         echo "NAME_TEST_$I=TEST$n" >> $GITHUB_ENV
          I=$((I + 1))
          done
          I=1
          for r in $RESULTS_; do
-         echo "VALUE_TEST_$I='$r'" >> $GITHUB_ENV
+         echo "VALUE_TEST_$I=$r" >> $GITHUB_ENV
          I=$((I + 1))
          done
      - name: Create Awesome Badge
