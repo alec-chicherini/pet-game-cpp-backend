@@ -51,7 +51,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: $GIST_ID
+          gistID: ${{ env.GIST_ID }}
           filename: test1.json
           label: ${{ env.NAME_TEST_1 }}
           message: ${{ env.VALUE_TEST_1 }}
@@ -59,7 +59,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: $GIST_ID
+          gistID: ${{ env.GIST_ID }}
           filename: test2.json
           label: ${{ env.NAME_TEST_2 }}
           message: ${{ env.VALUE_TEST_2 }}
@@ -67,7 +67,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: $GIST_ID
+          gistID: ${{ env.GIST_ID }}
           filename: test3.json
           label: ${{ env.NAME_TEST_3 }}
           message: ${{ env.VALUE_TEST_3 }}
@@ -75,7 +75,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: $GIST_ID
+          gistID: ${{ env.GIST_ID }}
           filename: test4.json
           label: ${{ env.NAME_TEST_4 }}
           message: ${{ env.VALUE_TEST_4 }}
