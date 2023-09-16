@@ -10,9 +10,20 @@ jobs:
     name: Update Badges
     runs-on: ubuntu-latest
     steps:
-      - name: Create Awesome Badge
-        uses: schneegans/dynamic-badges-action@v1.6.0
-        with:
+     - name: Checkout Repository
+       uses: actions/checkout@v2
+     - name: Build and run ctest
+       run: |
+         mkdir build 
+         cd build
+         conan install .. --build=missing -s build_type=Debug
+         cmake -DCMAKE_BUILD_TYPE=Debug ..
+         cmake --build .
+         ctest > output.txt
+         cat  output.txt
+     - name: Create Awesome Badge
+       uses: schneegans/dynamic-badges-action@v1.6.0
+       with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: fa7d81fb0caaae8a2790c00d2a20c0d0
           filename: cmake_tests.json
