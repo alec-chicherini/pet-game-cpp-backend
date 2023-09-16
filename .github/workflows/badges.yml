@@ -45,11 +45,13 @@ jobs:
           message: Ok
           color: green
      #TODO: make badge creation for custom number of testest
+       env:
+         GIST_ID: fa7d81fb0caaae8a2790c00d2a20c0d0
      - name: Create Badge Test1
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: fa7d81fb0caaae8a2790c00d2a20c0d0
+          gistID: $GIST_ID
           filename: test1.json
           label: ${{ env.NAME_TEST_1 }}
           message: ${{ env.VALUE_TEST_1 }}
@@ -57,7 +59,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: fa7d81fb0caaae8a2790c00d2a20c0d0
+          gistID: $GIST_ID
           filename: test2.json
           label: ${{ env.NAME_TEST_2 }}
           message: ${{ env.VALUE_TEST_2 }}
@@ -65,7 +67,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: fa7d81fb0caaae8a2790c00d2a20c0d0
+          gistID: $GIST_ID
           filename: test3.json
           label: ${{ env.NAME_TEST_3 }}
           message: ${{ env.VALUE_TEST_3 }}
@@ -73,7 +75,7 @@ jobs:
        uses: schneegans/dynamic-badges-action@v1.6.0
        with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: fa7d81fb0caaae8a2790c00d2a20c0d0
+          gistID: $GIST_ID
           filename: test4.json
           label: ${{ env.NAME_TEST_4 }}
           message: ${{ env.VALUE_TEST_4 }}
