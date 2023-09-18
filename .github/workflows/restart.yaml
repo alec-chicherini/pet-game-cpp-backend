@@ -60,7 +60,7 @@ jobs:
           echo "$LOG Server $SERVER_TO_START instance was started."
 
           echo "$LOG Waiting Game Server to start"
-          MAX_TIME_TO_WAIT=300
+          MAX_TIME_TO_WAIT=600
           TIME_WAITING=0
           
           while [ $(nc -z -w 3 olololo.lol 80; echo $?;) != "0" ]
