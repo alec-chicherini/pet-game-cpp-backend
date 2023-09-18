@@ -30,6 +30,7 @@ jobs:
           curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -a
           wait $!
           source "/home/$USER/.bashrc"
+          wait $!
           yc config set token $YC_TKN
           NEED_TO_START=true
           NEED_TO_STOP=false
