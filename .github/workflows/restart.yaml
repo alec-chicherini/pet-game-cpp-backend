@@ -59,7 +59,7 @@ jobs:
           wait $!
           echo "$LOG Server $SERVER_TO_START instance was started."
 
-          echo "- waiting ssh up"
+          echo "$LOG Waiting Game Server to start"
           MAX_TIME_TO_WAIT=300
           TIME_WAITING=0
           
