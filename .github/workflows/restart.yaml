@@ -1,0 +1,28 @@
+name: restart
+
+on:  
+  workflow_dispatch:
+    inputs:
+      server_name:
+        description: 'Server to start:'
+        required: true
+        type: choice
+        options:
+        - 'olololo.lol'
+        - 'test.srv'
+      force_restart:
+        description: 'Restart if already running'
+        required: false
+        type: boolean
+jobs:
+  start-yc-server:
+    runs-on: ubuntu:22.04
+    steps:
+      - name: Get inputs for workflow
+        env:
+          SERVER_TO_START: ${{ inputs.server_name }}
+          FORCE_RESTART: ${{ inputs.force_restart }}
+      - run: |
+          echo "Server to start: $SERVER_TO_START"
+          echo "Force restart checkbox: $FORCE_RESTART"
+        
