@@ -82,16 +82,3 @@ jobs:
           else
           echo "$LOG Do not need to restart. Exit."
           fi
-
-            TIME_CURRENT=$((100+$TIME_CURRENT))
-    if [ $TIME_CURRENT -ge $TIME_TO_WAIT ]; then
-      echo "TIME_CURRENT = $TIME_CURRENT"
-      echo "TIME_TO_WAIT = $TIME_TO_WAIT"
-      echo " -- ERROR: postgres server too much time to wait. Break."
-      exit 1
-      break
-    fi
-
-          
-          
-        
