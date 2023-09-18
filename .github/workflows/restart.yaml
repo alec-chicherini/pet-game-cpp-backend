@@ -60,7 +60,7 @@ jobs:
           echo "$LOG Server $SERVER_TO_START instance was started."
 
           echo "- waiting ssh up"
-          MAX_TIME_TO_WAIT=120
+          MAX_TIME_TO_WAIT=300
           TIME_WAITING=0
           
           while [ $(nc -z -w 3 olololo.lol 80; echo $?;) != "0" ]
