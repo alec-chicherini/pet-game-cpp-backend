@@ -16,7 +16,7 @@ on:
         type: boolean
 jobs:
   start-yc-server:
-    runs-on: ubuntu:22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Get inputs for workflow and run
         env:
