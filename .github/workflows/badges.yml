@@ -8,6 +8,7 @@ on:
 jobs:
   update-badges:
     name: Update Badges
+    if: "contains(github.event.commits[0].message, '[RUN_CI]')"
     runs-on: ubuntu-latest
     steps:
      - name: Checkout Repository
