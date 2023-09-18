@@ -27,7 +27,8 @@ jobs:
           LOG="restart.yaml>"
           echo "$LOG Server to start: $SERVER_TO_START"
           echo "$LOG Force restart checkbox: $FORCE_RESTART"
-          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -a
+          wait $!
           source "/home/$USER/.bashrc"
           yc config set token $YC_TKN
           NEED_TO_START=true
