@@ -60,14 +60,19 @@ jobs:
           echo "$LOG Server $SERVER_TO_START instance was started."
 
           echo "- waiting ssh up"
-          MAX_TIME_TO_WAIT=60000
+          MAX_TIME_TO_WAIT=120
           TIME_WAITING=0
           
           while [ $(nc -z -w 3 olololo.lol 80; echo $?;) != "0" ]
           do
           echo -n "."
-          TIME_WAITING=$(( $TIME_WAITING + 3000 ))
-          if [[ $TIME_WAITING -ge $MAX_TIME_TO_WAIT ]];then
+          if [[ $(($TIME_WAITING%9)) -eq 0 ]]; then
+          echo -n "$TIME_WAITING"
+          fi
+          TIME_WAITING=$(($TIME_WAITING+3))
+          if [ $TIME_WAITING -ge $MAX_TIME_TO_WAIT ]; then
+          echo "$LOG TIME_WAITING = $TIME_WAITING"
+          echo "$LOG MAX_TIME_TO_WAIT = $MAX_TIME_TO_WAIT"
           echo "$LOG ERROR: Too much time to wait for game server warmup. Exit."
           exit 1
           fi
@@ -77,6 +82,15 @@ jobs:
           else
           echo "$LOG Do not need to restart. Exit."
           fi
+
+            TIME_CURRENT=$((100+$TIME_CURRENT))
+    if [ $TIME_CURRENT -ge $TIME_TO_WAIT ]; then
+      echo "TIME_CURRENT = $TIME_CURRENT"
+      echo "TIME_TO_WAIT = $TIME_TO_WAIT"
+      echo " -- ERROR: postgres server too much time to wait. Break."
+      exit 1
+      break
+    fi
 
           
           
