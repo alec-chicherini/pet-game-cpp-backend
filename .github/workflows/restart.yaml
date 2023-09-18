@@ -23,17 +23,18 @@ jobs:
           SERVER_TO_START: ${{ inputs.server_name }}
           FORCE_RESTART: ${{ inputs.force_restart }}
           YC_TKN: ${{ secrets.YC_TOKEN }}
+          YC: /tmp/yc/bin/yc
         run: |
           LOG="restart.yaml>"
           echo "$LOG Server to start: $SERVER_TO_START"
           echo "$LOG Force restart checkbox: $FORCE_RESTART"
           echo "$LOG install yc"
           curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -i /tmp/yc -n
-          /tmp/yc/bin/./yc config set token $YC_TKN
+          $YC config set token $YC_TKN
           NEED_TO_START=true
           NEED_TO_STOP=false
           id=epdlpva9bbq9kp0euuhn
-          status=$(/tmp/yc/bin/./yc compute instance get $id | awk -F: '$1 == "status" {print$2}')
+          status=$($YC compute instance get $id | awk -F: '$1 == "status" {print$2}')
           if [[ $status == " RUNNING" ]];then
           echo "$LOG Server $SERVER_TO_START is already running."
           NEED_TO_START=false
@@ -44,13 +45,13 @@ jobs:
           fi
 
           if [[ $NEED_TO_STOP == "true" ]];then
-          /tmp/yc/bin/./yc compute instance stop $id > /dev/null
+          $YC compute instance stop $id > /dev/null
           wait $!
           echo "$LOG Server $SERVER_TO_START was stopped."
           fi
 
           if [[ $NEED_TO_START == "true" ]];then
-          /tmp/yc/bin/./yc compute instance start $id > /dev/null
+          $YC compute instance start $id > /dev/null
           wait $!
           echo "$LOG Server $SERVER_TO_START was started. Exit."
           else
