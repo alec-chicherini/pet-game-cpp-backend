@@ -9,7 +9,8 @@ on:
         type: choice
         options:
         - 'olololo.lol'
-        - 'test.srv'
+        - 'test_list.srv1'
+        - 'test_list.srv2'
       force_restart:
         description: 'Restart if already running'
         required: false
@@ -28,6 +29,9 @@ jobs:
           LOG="restart.yaml>"
           echo "$LOG Server to start: $SERVER_TO_START"
           echo "$LOG Force restart checkbox: $FORCE_RESTART"
+          if [[ $SERVER_TO_START != "olololo.lol" ]];then
+          echo "$LOG The $SERVER_TO_START not availible. Exit."
+          fi
           echo "$LOG install yc"
           curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -i /tmp/yc -n
           $YC config set token $YC_TKN
@@ -53,7 +57,23 @@ jobs:
           if [[ $NEED_TO_START == "true" ]];then
           $YC compute instance start $id > /dev/null
           wait $!
-          echo "$LOG Server $SERVER_TO_START was started. Exit."
+          echo "$LOG Server $SERVER_TO_START instance was started."
+
+          echo "- waiting ssh up"
+          MAX_TIME_TO_WAIT=60000
+          TIME_WAITING=0
+          
+          while [ $(nc -z -w 3 olololo.lol 80; echo $?;) != "0" ]
+          do
+          echo -n "."
+          TIME_WAITING=$(( $TIME_WAITING + 3000 ))
+          if [[ $TIME_WAITING -ge $MAX_TIME_TO_WAIT ]];then
+          echo "$LOG ERROR: Too much time to wait for game server warmup. Exit."
+          exit 1
+          fi
+          done
+          echo "$LOG Game server was startdet on $SERVER_TO_START. Exit."
+          
           else
           echo "$LOG Do not need to restart. Exit."
           fi
