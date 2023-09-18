@@ -31,6 +31,7 @@ jobs:
           wait $!
           source "/home/$USER/.bashrc"
           wait $!
+          exec -l $SHELL
           yc config set token $YC_TKN
           NEED_TO_START=true
           NEED_TO_STOP=false
