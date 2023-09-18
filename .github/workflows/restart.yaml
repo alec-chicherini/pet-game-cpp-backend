@@ -18,11 +18,11 @@ jobs:
   start-yc-server:
     runs-on: ubuntu:22.04
     steps:
-      - name: Get inputs for workflow
+      - name: Get inputs for workflow and run
         env:
           SERVER_TO_START: ${{ inputs.server_name }}
           FORCE_RESTART: ${{ inputs.force_restart }}
-      - run: |
+        run: |
           echo "Server to start: $SERVER_TO_START"
           echo "Force restart checkbox: $FORCE_RESTART"
         
